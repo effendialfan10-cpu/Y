@@ -77,3 +77,26 @@
   <script src="script.js"></script>
 </body>
 </html>
+
+<button onclick="toggleSpecialExercise()">🏋️‍♂️ Saran Olahraga Khusus</button>
+
+<div id="specialExercise" style="display:none; margin-top:20px;">
+  <h3>Rekomendasi Olahraga Khusus</h3>
+  <label for="goalSelect">Pilih Tujuan:</label>
+  <select id="goalSelect" onchange="updateSpecialExercise()">
+    <option value="">--Pilih Tujuan--</option>
+    <option value="tinggi">Menaikkan Tinggi Badan</option>
+    <option value="naikBerat">Menaikkan Berat Badan</option>
+    <option value="turunBerat">Menurunkan Berat Badan</option>
+  </select>
+
+  <label for="levelSelect">Tingkat Kesulitan:</label>
+  <select id="levelSelect" onchange="updateSpecialExercise()">
+    <option value="">--Pilih Tingkat--</option>
+    <option value="pemula">Pemula</option>
+    <option value="menengah">Menengah</option>
+    <option value="lanjutan">Lanjutan</option>
+  </select>
+
+  <div id="specialExerciseResult" style="margin-top:15px;"></div>
+</div>
