@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Health Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <h2>🌿 Smart Health</h2>
+      <ul>
+        <li onclick="showPage('home')">🏠 Beranda</li>
+        <li onclick="showPage('ideal')">🧍‍♂️ Berat Ideal</li>
+        <li onclick="showPage('nutrition')">🍎 Pola Makan</li>
+      </ul>
+      <button id="themeToggle">🌙 Mode Gelap</button>
+    </aside>
+
+    <main class="content">
+      <!-- Halaman Nama -->
+      <section id="home" class="page active">
+        <h1>Selamat Datang di Smart Health</h1>
+        <p>Masukkan nama Anda untuk memulai perjalanan kesehatan Anda!</p>
+        <input type="text" id="username" placeholder="Masukkan nama Anda">
+        <button onclick="startApp()">Mulai Sekarang</button>
+      </section>
+
+      <!-- Kalkulator Berat Ideal -->
+      <section id="ideal" class="page">
+        <h2>🧮 Kalkulator Berat Badan Ideal</h2>
+        <p id="greeting"></p>
+        <label>Jenis Kelamin:</label>
+        <select id="gender">
+          <option value="">Pilih</option>
+          <option value="L">Laki-laki</option>
+          <option value="P">Perempuan</option>
+        </select>
+
+        <label>Tinggi Badan (cm):</label>
+        <input type="number" id="height">
+
+        <label>Berat Badan (kg):</label>
+        <input type="number" id="weight">
+
+        <button onclick="calculateIdeal()">Hitung</button>
+
+        <div class="result" id="idealResult"></div>
+        <canvas id="bmiChart"></canvas>
+      </section>
+
+      <!-- Kalkulator Nutrisi -->
+      <section id="nutrition" class="page">
+        <h2>🍽️ Pola Makan & Nutrisi Harian</h2>
+        <p id="greeting2"></p>
+        <label>Berat Badan (kg):</label>
+        <input type="number" id="nutriWeight">
+
+        <label>Tingkat Aktivitas:</label>
+        <select id="activity">
+          <option value="">Pilih</option>
+          <option value="ringan">Ringan</option>
+          <option value="sedang">Sedang</option>
+          <option value="berat">Berat</option>
+        </select>
+
+        <button onclick="calculateNutrition()">Hitung Nutrisi</button>
+        <div class="result" id="nutritionResult"></div>
+        <canvas id="nutritionChart"></canvas>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
