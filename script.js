@@ -23,7 +23,7 @@ function startApp() {
   showPage("ideal");
 }
 
-// Kalkulator Berat Ideal
+// Berat Ideal
 function calculateIdeal() {
   const gender = document.getElementById("gender").value;
   const height = parseFloat(document.getElementById("height").value);
@@ -129,3 +129,27 @@ toggleBtn.addEventListener("click", () => {
   document.body.classList.toggle("dark");
   toggleBtn.textContent = document.body.classList.contains("dark") ? "☀️ Mode Terang" : "🌙 Mode Gelap";
 });
+
+// BMI Result
+const olahraga = getExerciseRecommendation(bmi);
+result.innerHTML = `
+  <h3>Hasil Analisis</h3>
+  <p><b>Berat Ideal:</b> ${ideal.toFixed(1)} kg</p>
+  <p><b>BMI:</b> ${bmi} (${status})</p>
+  <p><b>Saran Pola Makan:</b> ${tips}</p>
+  <h4>🏋️‍♂️ Rekomendasi Olahraga:</h4>
+  ${olahraga}
+`;
+
+// Nutrisi Result
+const saranAktivitas = getActivityRecommendation(aktivitas);
+result.innerHTML = `
+  <h3>Kebutuhan Nutrisi Harian</h3>
+  <p>Kalori: <b>${kalori.toFixed(0)} kcal</b></p>
+  <p>Protein: <b>${protein.toFixed(1)} g</b></p>
+  <p>Karbohidrat: <b>${karbo.toFixed(1)} g</b></p>
+  <p>Lemak: <b>${lemak.toFixed(1)} g</b></p>
+  <p>Air: <b>${air.toFixed(1)} L</b></p>
+  <h4>🏃‍♂️ Rekomendasi Aktivitas Fisik:</h4>
+  ${saranAktivitas}
+`;
