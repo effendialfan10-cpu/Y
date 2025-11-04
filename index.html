@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="id">
 <head>
   <meta charset="UTF-8">
@@ -72,32 +72,32 @@
         <div class="result" id="nutritionResult"></div>
         <canvas id="nutritionChart"></canvas>
       </section>
+
+      <!-- Panel Olahraga Khusus -->
+      <div id="specialExercise" style="display:none; margin-top:20px;">
+        <h3>Rekomendasi Olahraga Khusus</h3>
+        <label for="goalSelect">Pilih Tujuan:</label>
+        <select id="goalSelect" onchange="updateSpecialExercise()">
+          <option value="">--Pilih Tujuan--</option>
+          <option value="tinggi">Menaikkan Tinggi Badan</option>
+          <option value="naikBerat">Menaikkan Berat Badan</option>
+          <option value="turunBerat">Menurunkan Berat Badan</option>
+        </select>
+
+        <label for="levelSelect">Tingkat Kesulitan:</label>
+        <select id="levelSelect" onchange="updateSpecialExercise()">
+          <option value="">--Pilih Tingkat--</option>
+          <option value="pemula">Pemula</option>
+          <option value="menengah">Menengah</option>
+          <option value="lanjutan">Lanjutan</option>
+        </select>
+
+        <div id="specialExerciseResult" style="margin-top:15px;"></div>
+      </div>
+
     </main>
   </div>
 
   <script src="script.js"></script>
 </body>
 </html>
-
-
-
-<div id="olahraga" style="display:none; margin-top:20px;">
-  <h3>Rekomendasi Olahraga Khusus</h3>
-  <label for="goalSelect">Pilih Tujuan:</label>
-  <select id="goalSelect" onchange="updateSpecialExercise()">
-    <option value="">--Pilih Tujuan--</option>
-    <option value="tinggi">Menaikkan Tinggi Badan</option>
-    <option value="naikBerat">Menaikkan Berat Badan</option>
-    <option value="turunBerat">Menurunkan Berat Badan</option>
-  </select>
-
-  <label for="levelSelect">Tingkat Kesulitan:</label>
-  <select id="levelSelect" onchange="updateSpecialExercise()">
-    <option value="">--Pilih Tingkat--</option>
-    <option value="pemula">Pemula</option>
-    <option value="menengah">Menengah</option>
-    <option value="lanjutan">Lanjutan</option>
-  </select>
-
-  <div id="specialExerciseResult" style="margin-top:15px;"></div>
-</div>
