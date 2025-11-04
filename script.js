@@ -122,14 +122,6 @@ function calculateNutrition() {
     options: { plugins: { legend: { position: "bottom" } } }
   });
 }
-
-// 🌙 Dark Mode Toggle
-const toggleBtn = document.getElementById("themeToggle");
-toggleBtn.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
-  toggleBtn.textContent = document.body.classList.contains("dark") ? "☀️ Mode Terang" : "🌙 Mode Gelap";
-});
-
 function toggleSpecialExercise() {
   const panel = document.getElementById("specialExercise");
   panel.style.display = panel.style.display === "none" ? "block" : "none";
@@ -208,3 +200,11 @@ function updateSpecialExercise() {
 
   result.innerHTML = html;
 }
+
+// 🌙 Dark Mode Toggle
+const toggleBtn = document.getElementById("themeToggle");
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+  toggleBtn.textContent = document.body.classList.contains("dark") ? "☀️ Mode Terang" : "🌙 Mode Gelap";
+});
+
