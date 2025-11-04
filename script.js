@@ -130,26 +130,81 @@ toggleBtn.addEventListener("click", () => {
   toggleBtn.textContent = document.body.classList.contains("dark") ? "☀️ Mode Terang" : "🌙 Mode Gelap";
 });
 
-// BMI Result
-const olahraga = getExerciseRecommendation(bmi);
-result.innerHTML = `
-  <h3>Hasil Analisis</h3>
-  <p><b>Berat Ideal:</b> ${ideal.toFixed(1)} kg</p>
-  <p><b>BMI:</b> ${bmi} (${status})</p>
-  <p><b>Saran Pola Makan:</b> ${tips}</p>
-  <h4>🏋️‍♂️ Rekomendasi Olahraga:</h4>
-  ${olahraga}
-`;
+function toggleSpecialExercise() {
+  const panel = document.getElementById("specialExercise");
+  panel.style.display = panel.style.display === "none" ? "block" : "none";
+}
 
-// Nutrisi Result
-const saranAktivitas = getActivityRecommendation(aktivitas);
-result.innerHTML = `
-  <h3>Kebutuhan Nutrisi Harian</h3>
-  <p>Kalori: <b>${kalori.toFixed(0)} kcal</b></p>
-  <p>Protein: <b>${protein.toFixed(1)} g</b></p>
-  <p>Karbohidrat: <b>${karbo.toFixed(1)} g</b></p>
-  <p>Lemak: <b>${lemak.toFixed(1)} g</b></p>
-  <p>Air: <b>${air.toFixed(1)} L</b></p>
-  <h4>🏃‍♂️ Rekomendasi Aktivitas Fisik:</h4>
-  ${saranAktivitas}
-`;
+function updateSpecialExercise() {
+  const goal = document.getElementById("goalSelect").value;
+  const level = document.getElementById("levelSelect").value;
+  const result = document.getElementById("specialExerciseResult");
+
+  if (!goal || !level) {
+    result.innerHTML = "<p style='color:red;'>Pilih tujuan dan tingkat kesulitan.</p>";
+    return;
+  }
+
+  const exercises = {
+    tinggi: {
+      pemula: [
+        "🤸 Peregangan pagi & malam 10-15 menit",
+        "🏀 Lompat tali atau basket ringan 2-3x/minggu",
+        "🏊 Berenang 1-2x/minggu"
+      ],
+      menengah: [
+        "🤸 Peregangan harian 20 menit",
+        "🏀 Basket / voli 3x/minggu",
+        "🏊 Berenang intens 2-3x/minggu"
+      ],
+      lanjutan: [
+        "🤸 Yoga & pilates 5x/minggu",
+        "🏀 Olahraga lompat intens 3-4x/minggu",
+        "🏊 Berenang + peregangan setelah latihan"
+      ]
+    },
+    naikBerat: {
+      pemula: [
+        "🏋️ Latihan beban ringan 2x/minggu",
+        "🍳 Tingkatkan asupan protein",
+        "🥛 Smoothie & camilan sehat"
+      ],
+      menengah: [
+        "🏋️ Latihan beban menengah 3x/minggu",
+        "🥗 Pola makan seimbang tinggi kalori",
+        "🛌 Istirahat cukup untuk pertumbuhan otot"
+      ],
+      lanjutan: [
+        "🏋️ Latihan beban lanjutan 4-5x/minggu",
+        "🍗 Nutrisi protein tinggi + karbo kompleks",
+        "💪 Fokus compound exercise (squat, deadlift)"
+      ]
+    },
+    turunBerat: {
+      pemula: [
+        "🏃 Jalan cepat 30 menit/hari",
+        "🤸 Senam ringan 2-3x/minggu",
+        "🥗 Kurangi gula dan lemak jenuh"
+      ],
+      menengah: [
+        "🏃 Jogging / treadmill 4x/minggu",
+        "🏋️ Latihan beban ringan-sedang",
+        "🥗 Makan kalori defisit seimbang"
+      ],
+      lanjutan: [
+        "🏋️ HIIT 3x/minggu + kardio 4x/minggu",
+        "🏊 Berenang intens",
+        "🥗 Diet terencana + protein tinggi"
+      ]
+    }
+  };
+
+  let html = `<h4>${goal === "tinggi" ? "Menaikkan Tinggi Badan" : goal === "naikBerat" ? "Menaikkan Berat Badan" : "Menurunkan Berat Badan"} - Tingkat ${level.charAt(0).toUpperCase() + level.slice(1)}</h4><ul>`;
+
+  exercises[goal][level].forEach(item => {
+    html += `<li>${item}</li>`;
+  });
+  html += "</ul>";
+
+  result.innerHTML = html;
+}
